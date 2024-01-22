@@ -1,0 +1,36 @@
+.buttonOpenFilter,.buttonCloseFilter{
+    height: 55px;
+    width: 55px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    border-radius: 30px;
+    border: none;
+    margin: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 23;
+    transition: 0.5s;
+}
+
+.buttonOpenFilter svg,.buttonCloseFilter svg{
+    font-size: 20px;
+}
+
+.buttonOpenFilter{
+    background-color: #069e8c;
+}
+
+.buttonOpenFilter > svg{
+    color: #99db49;
+}
+
+.buttonCloseFilter{
+    background-color: #99db49;
+}
+
+.buttonCloseFilter > svg{
+    color: #069e8c;
+}

@@ -6,6 +6,7 @@ const express = require('express')
 const cors = require('cors')
 const routes = require('./routes/Router')
 
+
 class App{
     constructor(){
         this.server=express()

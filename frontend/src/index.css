@@ -1,0 +1,27 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.active{
+  font-weight: bold;
+}
+
+input,select{
+  outline: none;
+}
+
+select{
+  border-style: none;
+}
+
+option{
+  background-color: #069e8c;
+  border: transparent;
+}
+
+img{
+  max-width: 100%;
+  max-height: 100%;
+}
