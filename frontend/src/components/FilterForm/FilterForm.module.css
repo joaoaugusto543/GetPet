@@ -1,0 +1,61 @@
+.filterForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.filterForm label{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 70%;
+    margin-bottom: 1em;
+}
+
+.filterForm span{
+    font-size: 18px;
+    color: #99db49;
+    margin-bottom: 0.3em;
+    font-family: 'Salsa', cursive;
+}
+
+.filterForm label > input[type='text'], .filterForm label > select{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #99db49;
+    color: #99db49;
+    padding-bottom: 0.4em;
+    font-size: 14px;
+    height: 30px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.filterForm > select > option{
+    background-color: #069e8c;
+}
+
+.filterForm label > input[type='text']{
+    padding-left: 0.3em;
+}
+
+.filterForm label > input[type='text']::placeholder{
+    color: #99db49;
+}
+
+.filterForm input[type='submit']{
+    background-color: #99db49;
+    color: #069e8c;
+    border: none;
+    height: 25px;
+    width: 120px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 1em;
+}
+
+.buttons input:first-child{
+    margin-right: 0.5em;
+}

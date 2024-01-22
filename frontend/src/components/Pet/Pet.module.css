@@ -1,0 +1,78 @@
+.petCard{
+    height: 700px;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 2em;
+    box-shadow: 6px 4px 10px -6px #222;
+    background-color: #069e8c;
+    border-radius: 40px;
+    animation: toApper 1.5s ease normal;
+    margin-bottom: 2em;
+}
+
+@keyframes toApper{
+    to{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+
+    from{
+        transform: translateY(30px);
+        opacity: 0.3;
+    }
+}
+
+.petCard img{
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 40px 40px 0px 0px; 
+}
+
+.petCard span{
+    font-size: 35px;
+    font-family: 'Salsa', cursive;
+    margin: 0.5em 0;
+    color: #99db49;
+    font-weight: bold;
+}
+
+.description{
+    font-family: 'Crimson Text', serif;
+    font-size: 20px;
+    width: 100%;
+    color: #99db49;
+    padding: 0 1em;
+    text-align: justify;
+    height: 100px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.petCard a{
+    background-color: #99db49;
+    padding: 0.5em 2em;
+    border-radius: 30px;
+    text-decoration: none;
+    color: #069e8c;
+    margin-top: 5em;
+    font-size: 20px;
+    transition: 0.5s;
+    font-weight: bold;
+}
+
+.petCard a:hover{
+    background-color: #99e63b;
+}
+
+.adopted{
+    color: rgb(0, 255, 0);
+    font-size: 25px;
+    margin-top: 4.2em;
+    font-weight: bold;
+}

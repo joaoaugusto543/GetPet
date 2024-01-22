@@ -1,0 +1,21 @@
+.logout{
+    background-color: transparent;
+    color: #99db49;
+    border: none;
+    font-size: 25px;
+    font-family: 'Salsa', cursive;
+    text-shadow: 2px 3px 4px #414141;
+    position: absolute;
+    top:0px;
+    right:0px;
+    margin: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.logout > svg{
+    margin-left: 0.2em;
+    font-size: 30px;
+}

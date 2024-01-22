@@ -1,0 +1,70 @@
+.navBar{
+    background-color: #069e8c;
+    height: 150px;
+    width: 100%;
+    box-shadow: 0px 3px 9px 3px #414141;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em 5em;
+    position: fixed;
+    transition: 0.5s;
+    z-index: 5;
+}
+
+.header{
+    width: 100%;
+    height: 150px;
+}
+
+.navBar > a{
+    text-decoration: none;
+    color: #99db49;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navBar > a > h1{
+    font-size: 45px;
+    font-family: 'Salsa', cursive;
+    text-shadow: 2px 3px 4px #414141;
+}
+
+
+.navBar > a > img{
+    height: 80px;
+    width: 80px;
+}
+
+.profileImage{
+    width: 40px;
+    height: 40px;
+    border-radius: 30px;
+    margin-right: 0.5em;
+}
+
+.navLinks{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style-type: none;
+    font-family: 'Salsa', cursive;
+}
+
+.navLinks > li{
+    margin-left: 2em;
+}
+
+.navLinks > li > a{
+    text-decoration: none;
+    color: #99db49;
+    font-size: 25px;
+    text-shadow: 2px 3px 4px #414141;
+}
+
+.profile > a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

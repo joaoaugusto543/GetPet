@@ -21,8 +21,14 @@ const Schedule= mongoose.model(
             local:{
                 type:String,
                 require:true
-            }
-
+            },
+            available:{
+                type:Boolean,
+                require:true,
+                default:false
+            },
+            user:Object,
+            adopter:Object,
             Pet:Object
        }
     )    
