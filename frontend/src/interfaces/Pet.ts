@@ -1,14 +1,16 @@
 interface PetInterface{
-    id:string,
+    _id:string,
     name:string,
     size:string,
-    images:String[],
+    images:string[],
     available:boolean,
-    species:String,
-    description:String,
+    species:string,
+    description:string,
     user:{
-        name:String
-        phone:String
+        name:string
+        image:string
+        email:string
+        phone?:string
         city:string
         uf:string
     },

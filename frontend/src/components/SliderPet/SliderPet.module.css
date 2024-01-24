@@ -1,0 +1,46 @@
+.carrosel{
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 500px;
+    width: 500px;
+    overflow: hidden;
+}
+
+.carrosel > img{
+    min-width: 500px;
+    height: 500px;
+    transform: translateX(0px);
+    object-fit: cover;
+    transition: 0.5s ease;
+}
+
+.controllers{
+    position: absolute;
+}
+
+.controllers{
+    height: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.controllers svg{
+    position: absolute;
+    font-size: 35px;
+    margin: 0 0.5em;
+    color: transparent;
+    cursor: pointer;
+    transition: 0.5s;
+    filter:drop-shadow(0px 3px 10px #222)
+}
+
+.controllers svg:last-child{
+    right: 0;
+}
+
+.controllers:hover > svg{
+    color: #069e8c;
+}
