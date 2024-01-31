@@ -1,10 +1,13 @@
 const Pet= require('../models/Pet')
 
 module.exports=class PetsContollers{
+    
     static async createPet(req,res){
         try {
 
-            //const {name,size,images,available,species,description,user,adopter}=req.body
+            const {name,size,images,available,species,description,user,adopter}=req.body
+
+            
 
             const newPet=await Pet.create(req.body)
 
@@ -35,19 +38,15 @@ module.exports=class PetsContollers{
         try {
             
             const {id}=req.params
-    
-            try {
+  
+            const pet= await Pet.findOne({_id:id})
 
-                const pet= await Pet.findById(id).lean()
-                
-                return res.status(200).json(pet)
-                
-            } catch (error) {
-                console.log(error.message)
+            if(!pet){
                 return res.status(404).json({error:'Pet not found'})
             }
-
-
+                
+            return res.status(200).json(pet)
+                
         } catch (error) {
             console.log(error)
             return res.status(500).json({error:'Internal error'})

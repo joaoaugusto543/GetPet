@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../store'
-import { getPets } from '../slices/PetsSlices'
+import { getPets } from '../slices/petsSlices'
 
 
 function useFetchPets() {

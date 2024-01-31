@@ -1,11 +1,15 @@
+import { logout } from '../../slices/authSlices'
+import { useAppDispatch } from '../../store'
 import styles from './ButtonLogout.module.css'
 import { IoIosLogOut } from 'react-icons/io'
 
 
 function ButtonLogout() {
 
+  const dispatch=useAppDispatch()
+
   function handleLogout(){
-    console.log('logout')
+    dispatch(logout())
   }
 
   return (

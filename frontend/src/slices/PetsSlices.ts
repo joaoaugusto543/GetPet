@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import filter from '../scripts/filter'
-import initialStatePet from '../interfaces/initialStatePet'
+import InitialStatePet from '../interfaces/InitialStatePet'
 import DataFilterPets from '../interfaces/DataFilterPets';
-import { showPet, showPets } from '../services/PetServices';
+import { showPet, showPets } from '../services/petServices';
 
-const initialState:initialStatePet={
+const initialState:InitialStatePet={
     pets:[],
     pet:null,
     loading:false,

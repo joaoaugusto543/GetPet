@@ -82,10 +82,12 @@ export default function carrosel(){
 
 
    if(imagesArray.length > 1){
+
+    const time=1800 // 1,8 seconds
     
         const interval=setInterval(()=>{
             passImage()
-        },1800)
+        },time)
 
         left.addEventListener('click',()=>{clearInterval(interval)})
         right.addEventListener('click',()=>{clearInterval(interval)})

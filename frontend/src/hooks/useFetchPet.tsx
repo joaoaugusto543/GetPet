@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { useAppDispatch, useAppSelector } from "../store"
-import { getPet } from "../slices/PetsSlices"
+import { getPet } from "../slices/petsSlices"
 
 type Props={
     id:string | undefined

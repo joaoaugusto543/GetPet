@@ -27,7 +27,7 @@
 }
 
 .alert{
-    font-size: 20px;
+    font-size: 18px;
     font-family: 'Crimson Text', serif;
     padding: 1em 0;
     color: red;
@@ -39,6 +39,7 @@
     display: flex;
     align-items: center;
     height: 150px;
+    width: 100%;
     border-bottom: 1px solid rgb(0, 0, 0,0.5);
 }
 
@@ -52,19 +53,23 @@
 .userInformation{
     display: flex;
     flex-wrap: wrap;
-    width: 400px;
+    width: 600px;
 }
 
-.userInformation p{
+.userInformation p,.chat{
     display: flex;
     align-items: center;
-    width: 200px;
+    width: 198px;
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
 }
 
-.name,.email{
+.name,.email,.chat{
     margin-bottom: 1em;
+}
+
+.chat:hover, .chat:hover > svg{
+    color: #8ec44c;
 }
 
 .userInformation svg{
@@ -76,9 +81,11 @@
 .chat{
     background-color: transparent;
     border: none;
-    font-size: 18px;
-    font-family: 'Roboto', sans-serif;
-    text-decoration:underline;
-    color: #069e8c;
     cursor: pointer;
+    padding: 0;
+    transition: 0.5s;
+}
+
+.chat svg{
+    transition: 0.5s;
 }

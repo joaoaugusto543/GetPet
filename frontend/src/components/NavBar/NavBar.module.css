@@ -42,6 +42,7 @@
     height: 40px;
     border-radius: 30px;
     margin-right: 0.5em;
+    object-fit: cover;
 }
 
 .navLinks{

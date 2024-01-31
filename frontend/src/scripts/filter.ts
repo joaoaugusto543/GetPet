@@ -20,7 +20,7 @@ export default function filter(pets:PetInterface[],filterPets:FilterPets | undef
             return
         }
 
-        if(species && pet.species.indexOf(`${species}`) === -1){
+        if(species && pet.species.indexOf(`${species.toLowerCase()}`) === -1){
             return
         }
 

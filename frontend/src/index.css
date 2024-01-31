@@ -30,3 +30,22 @@ img{
 button{
   user-select: none;
 }
+
+input[type='file']{
+  display: none;
+}
+
+input[type='submit']:disabled{
+  cursor:no-drop;
+}
+
+input[type=number]::-webkit-inner-spin-button { 
+  -webkit-appearance: none;
+  
+}
+input[type=number] { 
+ -moz-appearance: textfield;
+ appearance: textfield;
+
+}
+
