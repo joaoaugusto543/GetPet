@@ -1,0 +1,61 @@
+.register{
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2em;
+    height: 100%;  
+}
+
+.register h1{
+    font-family: 'Salsa', cursive;
+    color: #99db49;
+    text-shadow: 2px 2px 4px #414141;
+    font-size: 45px;
+    margin-bottom: 0.5em;
+}
+
+.dog{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    animation: toApperDog 1s ease normal;
+    width: 500px;
+    filter:  drop-shadow(4px 3px 4px #333);
+}
+
+.cat{
+    position: fixed;
+    bottom: 0;
+    right: 30px;
+    animation: toApperCat 1s ease normal;
+    width: 400px;
+    transform: translateY(57%);
+    filter:  drop-shadow(4px 3px 4px #333);
+}
+
+@keyframes toApperDog{
+    to{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+
+    from{
+        transform: translateY(250px);
+        opacity: 0;
+    }
+}
+
+@keyframes toApperCat{
+    to{
+        transform: translateY(57%);
+        opacity: 1;
+    }
+
+    from{
+        transform: translateY(720px);
+        opacity: 0;
+    }
+}

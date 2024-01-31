@@ -1,0 +1,109 @@
+.registerForm > label > select > option{
+    background-color: aliceblue;
+}
+
+.registerForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.registerForm > label{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 1em;
+    width: 40%;
+}
+
+.registerForm > label > span{
+    font-size: 20px;
+    font-family: 'Salsa', cursive;
+    color: #99db49;
+    font-weight: bold;
+    margin-bottom: 0.1em;
+}
+
+.registerForm > label > input[type='text'],.registerForm > label > input[type='email'],.registerForm > label > input[type='password'], .registerForm > label > select{
+    border: none;
+    border-bottom:1px solid #222 ;
+    height: 30px;
+    color: #222;
+}
+
+.registerForm > label > input[type='text']::placeholder,.registerForm > label > input[type='email']::placeholder,.registerForm > label > input[type='password']::placeholder{
+    color: #222;
+}
+
+.registerForm > input[type='submit']{
+    background-color: transparent;
+    border: none;
+    height: 35px;
+    width: 150px;
+    background-color: #9df334;
+    color: #069e8c;
+    border-radius:70px ;
+    margin-top: 1.5em;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.registerForm > input[type='submit']:hover{
+    background-color: #a5ff36;
+    
+}
+
+.anonymous{
+    background-color: #979797;
+    border-radius:70px ;
+    width: 130px;
+    height: 130px;
+    cursor: pointer;
+}
+
+#file{
+    align-items: center;
+    justify-content: center;
+    margin: 0.5em;
+    width: 130px;
+}
+
+#file > span{
+    color: #222;
+    font-size: 12px;
+    position: absolute;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.preview{
+    border-radius:70px ;
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+}
+
+#updateFile{
+    background-color: #99db49;
+    width: 150px;
+    height: 35px;
+    margin: 1.5em 0;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#updateFile > span{
+    color: #fff;
+    font-size: 16px;
+    font-weight: normal;
+}

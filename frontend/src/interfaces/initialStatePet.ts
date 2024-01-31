@@ -1,6 +1,6 @@
 import PetInterface from "./Pet";
 
-export default interface initialStatePet{
+export default interface InitialStatePet{
     pets:PetInterface[],
     pet:PetInterface | null,
     loading:boolean,

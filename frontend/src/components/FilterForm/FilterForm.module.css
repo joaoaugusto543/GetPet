@@ -54,6 +54,12 @@
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
     margin-top: 1em;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.filterForm input[type='submit']:hover{
+    background-color: #99e937;
 }
 
 .buttons input:first-child{

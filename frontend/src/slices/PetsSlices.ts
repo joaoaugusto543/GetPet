@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import filter from '../scripts/filter'
-import initialStatePet from '../interfaces/initialStatePet'
+import InitialStatePet from '../interfaces/InitialStatePet'
 import DataFilterPets from '../interfaces/DataFilterPets';
-import { showPets } from '../services/PetServices';
+import { showPet, showPets } from '../services/petServices';
 
-const initialState:initialStatePet={
+const initialState:InitialStatePet={
     pets:[],
     pet:null,
     loading:false,
@@ -31,6 +31,19 @@ export const getPets=createAsyncThunk('pets/getPets',async (_data,thunkAPI) =>{
     return pets
 })
 
+export const getPet=createAsyncThunk('pets/getPet',async (data:{id:string},thunkAPI) =>{
+
+    const {id}=data
+
+    const pets= await showPet(id)
+
+    if(pets.error){
+        return thunkAPI.rejectWithValue(pets.error)
+    }
+
+    return pets
+})
+
 const petsSlice=createSlice({
     name:'pets',
     initialState,
@@ -47,6 +60,15 @@ const petsSlice=createSlice({
             state.loading=true
         })
         .addCase(getPets.rejected,(state,action)=>{
+            state.error=action.payload
+        })
+        .addCase(getPet.fulfilled,(state,action)=>{
+            state.pet=action.payload
+        })
+        .addCase(getPet.pending,(state)=>{
+            state.loading=true
+        })
+        .addCase(getPet.rejected,(state,action)=>{
             state.error=action.payload
         })
     }

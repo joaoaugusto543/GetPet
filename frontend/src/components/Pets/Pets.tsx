@@ -19,7 +19,7 @@ function Pets() {
 
   return (
     <section className={styles.pets}>
-        {pets.map(pet =><Pet pet={pet} key={pet.id}/>)}
+        {pets.map(pet =><Pet pet={pet} key={pet._id}/>)}
         <Filter pets={petsFetch} setPets={setPets}/>
     </section>
   )

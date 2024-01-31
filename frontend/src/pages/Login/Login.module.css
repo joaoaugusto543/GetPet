@@ -1,0 +1,35 @@
+.login{
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 5em 3em;
+}
+
+.login h1{
+    font-family: 'Salsa', cursive;
+    color: #99db49;
+    text-shadow: 2px 2px 4px #414141;
+    font-size: 45px;
+    margin-bottom: 0.5em;
+}
+
+.cat{
+    position: fixed;
+    bottom: 0;
+    right: 20%;
+    animation: toApperCatLogin 0.5s ease-out normal;
+    filter:  drop-shadow(3px 2px 3px #333);
+}
+
+@keyframes toApperCatLogin{
+    to{
+        transform: translateY(0px);
+    }
+
+    from{
+        transform: translateY(400px);
+    }
+}
