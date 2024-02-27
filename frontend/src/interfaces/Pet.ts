@@ -1,14 +1,17 @@
+import ImagesPet from './imagesPet'
+
 interface PetInterface{
     _id:string,
     name:string,
     size:string,
-    images:string[],
+    images:ImagesPet[],
     available:boolean,
     species:string,
     description:string,
     user:{
+        id:string,
         name:string
-        image:string
+        profileImage:string
         email:string
         phone?:string
         city:string

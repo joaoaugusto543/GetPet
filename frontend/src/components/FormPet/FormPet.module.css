@@ -1,0 +1,125 @@
+.formPet{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    z-index: 2;
+}
+
+.formPet > label{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 0.5em;
+    width: 30%;
+    margin-bottom: 1em;
+}
+
+.formPet > label > input,.formPet > label > select,.formPet > label > textarea{
+    width: 100%;
+    border: none;
+    border-bottom:1px solid #fff ;
+    color: #fff;
+    background-color: transparent;
+}
+
+.formPet > label > input::placeholder,.formPet > label > select::placeholder,.formPet > label > textarea::placeholder{
+    color: #fff;
+}
+
+.formPet > label > input, .formPet > label > select{
+    height: 30px;
+}
+
+.formPet > label > textarea{
+    height: 100px;
+}
+
+.formPet > label > span{
+    color:#99db49 ;
+    font-weight: bold;
+    font-family: 'Salsa', cursive;
+    font-size: 18px;
+}
+
+.formPet > label > textarea{
+    margin-top: 0.5em;
+}
+
+.formPet > label > select > option{
+    background-color: aliceblue;
+    color: #222;
+}
+
+.formPet > input{
+    background-color: #99db49;
+    border: none;
+    width: 130px;
+    height: 30px;
+    margin-top: 1em;
+    border-radius: 40px;
+    font-size: 14px;
+    color: #069e8c;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.files > span{
+    margin-bottom: 0.5em;
+}
+
+.containerImages{
+    border: 1px solid #fff;
+    width: 30%;
+    padding: 0.7em;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 145px;
+    position: relative;
+}
+
+.containerImages > span{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    color: #fff;
+    margin: 0.5em;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+#file{
+    margin-top: 0.5em;
+}
+
+#file > span{
+    background-color: #99db49;
+    width: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0.5em;
+    border-radius: 20px;
+    font-size: 14px;
+    color: #069e8c;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    margin-bottom: 0.5em;
+}
+
+#file > span > svg{
+    font-size: 16px;
+    margin-right: 0.2em;
+}
+
+.success{
+    color: #90fd0a;
+    z-index: 2;
+    font-size: 18px;
+    font-family: 'Salsa', cursive;
+}

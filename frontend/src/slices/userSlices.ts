@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import DataCreateUser from '../interfaces/DataCreateUser'
-import userServices from '../services/userServices'
+import {createUser} from '../services/userServices'
 
 const initialState={
     user:null,
@@ -11,7 +11,7 @@ const initialState={
 
 export const createUserThunk=createAsyncThunk('user/createUser',async (data:DataCreateUser,thunkAPI)=>{
 
-    const res=await userServices.createUser(data)
+    const res=await createUser(data)
 
     if(res.error){
         return thunkAPI.rejectWithValue(res.error)

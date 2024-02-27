@@ -1,7 +1,7 @@
 import Api from '../api/Api'
 import DataCreateSession from '../interfaces/DataCreateSession'
 
-async function createSession(login:DataCreateSession){
+export async function createSession(login:DataCreateSession){
 
     try {
 
@@ -16,9 +16,3 @@ async function createSession(login:DataCreateSession){
         return error.response.data
     }
 }
-
-const sessionServices={
-    createSession
-}
-
-export default sessionServices

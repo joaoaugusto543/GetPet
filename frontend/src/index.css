@@ -1,14 +1,14 @@
 *{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box
 }
 
 .active{
   font-weight: bold;
 }
 
-input,select{
+input,select,textarea{
   outline: none;
 }
 
@@ -49,3 +49,23 @@ input[type=number] {
 
 }
 
+input::placeholder,textarea::placeholder{
+  font-family: 'Roboto', sans-serif;
+}
+
+input,textarea,button{
+  font-family: 'Roboto', sans-serif;
+}
+
+textarea{
+  resize: none;
+}
+
+img{
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.ReactCrop__child-wrapper>img{
+  max-height: 70vh;
+}

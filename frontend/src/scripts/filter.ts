@@ -1,5 +1,5 @@
-import PetInterface from "../interfaces/Pet";
-import FilterPets from "../interfaces/FilterPets";
+import PetInterface from '../interfaces/Pet'
+import FilterPets from '../interfaces/FilterPets'
 
 
 export default function filter(pets:PetInterface[],filterPets:FilterPets | undefined){
@@ -9,7 +9,7 @@ export default function filter(pets:PetInterface[],filterPets:FilterPets | undef
     }
 
     const {city,uf,species,available,size}=filterPets
-
+   
     const petsFiltered=pets.filter(pet =>{
 
         if(city && pet.user.city !== city){
@@ -20,7 +20,7 @@ export default function filter(pets:PetInterface[],filterPets:FilterPets | undef
             return
         }
 
-        if(species && pet.species.indexOf(`${species.toLowerCase()}`) === -1){
+        if(species && pet.species.toLowerCase().indexOf(`${species.toLowerCase()}`) === -1){
             return
         }
 

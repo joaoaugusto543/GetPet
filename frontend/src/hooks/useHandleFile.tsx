@@ -1,10 +1,10 @@
 import React from 'react'
 
 type Props={
-    setProfileImage:Function
+    set:Function
 }
 
-function useHandleFile({setProfileImage}:Props) {
+function useHandleFile({set}:Props) {
 
     function handleFile(e: React.BaseSyntheticEvent){
 
@@ -15,7 +15,8 @@ function useHandleFile({setProfileImage}:Props) {
         }
     
         if(file){
-            setProfileImage(file)
+ 
+            set(file)
             return
         }
     

@@ -1,0 +1,28 @@
+.dashboard{
+    padding: 3em;
+}
+
+.link{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    padding: 0 2em;
+}
+
+.link > a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #99db49;
+    padding: 0.7em 1em;
+    text-decoration: none;
+    color: #069e8c;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 2px 2px 5px -1px #222;
+    font-weight: bold;
+}
+
+.link > a > svg{
+    margin-right:0.2em ;
+    font-size: 20px;
+}

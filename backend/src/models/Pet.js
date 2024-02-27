@@ -31,6 +31,11 @@ const Pet= mongoose.model(
                 type:String,
                 require:true
             },
+            candidates:{
+                type:Array,
+                require:true,
+                default:[]
+            },
             user:Object,
             adopter:Object
         },

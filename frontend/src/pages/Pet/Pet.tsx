@@ -4,7 +4,6 @@ import { Params, useParams } from 'react-router-dom'
 import styles from './Pet.module.css'
 import { FaMapMarkerAlt , FaPhoneAlt , FaUser } from 'react-icons/fa'
 import { IoChatboxEllipses } from 'react-icons/io5'
-import { MdEmail } from 'react-icons/md'
 import { useState } from 'react'
 
 function Pet() {
@@ -17,20 +16,19 @@ function Pet() {
  
   return (
     <section className={styles.petPage}>
-        {pet &&
+        {pet && id &&
             <>
-              <SliderPet imgs={pet.images} name={pet.name}/>
+              <SliderPet id={id} imgs={pet.images} name={pet.name}/>
               <div className={styles.informations}>
                 <h1>{pet.name}</h1>
                 <p className={styles.description}>{pet.description}</p>
                 <div className={styles.user}>
-                  <img src={pet.user.image} alt={pet.user.name} />
+                  <img src={pet.user.profileImage} alt={pet.user.name} />
                   <div className={styles.userInformation}>
                     <p className={styles.name}><FaUser/>{pet.user.name}</p>
-                    <p className={styles.email}><MdEmail/>{pet.user.email}</p>
-                    {!showChat && <button className={styles.chat} onClick={()=>{setShowChat(true)}}><IoChatboxEllipses />Bate-papo</button>}
                     <p><FaPhoneAlt/>{pet.user.phone}</p>
                     <p><FaMapMarkerAlt/>{pet.user.city} - {pet.user.uf}</p>
+                    {!showChat && <button className={styles.chat} onClick={()=>{setShowChat(true)}}><IoChatboxEllipses />Bate-papo</button>}
                   </div>
                 </div>
                 <div>

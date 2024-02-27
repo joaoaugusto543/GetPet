@@ -17,6 +17,16 @@ function createPetValidation(){
                 }
 
                 return true
-            })
-    ]
+            }),
+        body('species')
+            .isString()
+            .withMessage('Invalid specie'),
+        body('description')
+            .isString()
+            .withMessage('Invalid description')
+            .isLength({min:3})
+            .withMessage('Description too small')
+        ]
 }
+
+module.exports=createPetValidation

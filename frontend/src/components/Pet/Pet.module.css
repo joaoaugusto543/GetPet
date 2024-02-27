@@ -27,7 +27,6 @@
 .petCard img{
     height: 300px;
     width: 100%;
-    object-fit: cover;
     border-radius: 40px 40px 0px 0px; 
 }
 
