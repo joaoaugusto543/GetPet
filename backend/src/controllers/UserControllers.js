@@ -1,12 +1,8 @@
-const createToken = require('../helpers/createToken')
 const encryptPassword = require('../helpers/encryptPassword')
 const cloudinary = require('../helpers/configCloudinary')
 const User= require('../models/User')
-const sendEmail = require('../helpers/sendEmail')
 const sendVerificationCode = require('../helpers/sendVerificationCode')
 const encryptCode = require('../helpers/encryptCode')
-const verifyCode = require('../helpers/verifyCode')
-const verifyPassword = require('../helpers/verifyPassword')
 
 module.exports=class UserControllers{
 
@@ -60,27 +56,35 @@ module.exports=class UserControllers{
 
     static async updateCode(req,res) {
 
-        const {email}=req.body
-
-        const user=await User.findOne({email})
+        try {
             
-        if(!user){
-            return res.status(422).json({error:'User already exists'})
+            const {email}=req.body
+    
+            const user=await User.findOne({email})
+                
+            if(!user){
+                return res.status(422).json({error:'User already exists'})
+            }
+    
+            if(user.checked){
+                return res.status(200).json({message:'Checked'})
+            }
+    
+            const code=await sendVerificationCode(email)
+    
+            const encryptedCode= await encryptCode(code)
+    
+            user.code=encryptedCode
+    
+            await User.updateOne({email},{$set:user})
+    
+            return res.status(200).json({message:'Send'})
+
+        } catch (error) {
+           console.log(error)
+           return res.status(500).json({error:'Internal error'}) 
         }
 
-        if(user.checked){
-            return res.status(200).json({message:'Checked'})
-        }
-
-        const code=await sendVerificationCode(email)
-
-        const encryptedCode= await encryptCode(code)
-
-        user.code=encryptedCode
-
-        await User.updateOne({email},{$set:user})
-
-        return res.status(200).json({message:'Send'})
     }
 
 }

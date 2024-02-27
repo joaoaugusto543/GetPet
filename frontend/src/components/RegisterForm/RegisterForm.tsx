@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import SelectUfs from '../SelectUfs/SelectUfs'
 import styles from './RegisterForm.module.css'
 import SelectCities from '../SelectCities/SelectCities'
@@ -22,10 +22,13 @@ function RegisterForm() {
     const [profileImage,setProfileImage]=useState<File | null>(null)
     const [phone,setPhone]=useState<string>('')
     
-    const handleFile=useHandleFile({setProfileImage})
+    const previewImageRef=useRef(null)
+    
+    const handleFile=useHandleFile({set:setProfileImage})
     const handlePhone=useHandlePhone({setPhone,phone})
     
     const {showFormCode,handleOpen,handleClose}=useCode()
+
     
     const dispatch=useAppDispatch()
     
@@ -68,17 +71,17 @@ function RegisterForm() {
   return (
     <>
         {showFormCode && <Code email={email} password={password} handleClose={handleClose}/>}
-        {profileImage && <img className={styles.preview} src={URL.createObjectURL(profileImage)} alt={profileImage.name} />}
+        {profileImage && <img ref={previewImageRef} className={styles.preview} src={URL.createObjectURL(profileImage)} alt={profileImage.name} />}
         <form className={styles.registerForm} onSubmit={handleSubmit}>
             {!profileImage ?
                 <label id={styles.file} className={styles.file}>
-                    <input type='file' accept='.png , .jpeg , .jpg' value={profileImage ? profileImage : ''}  onChange={handleFile}/>
+                    <input type='file' accept='.png , .jpeg , .jpg' value={''} onChange={handleFile}/>
                     <img className={styles.anonymous} src='https://res.cloudinary.com/dezsbjgjj/image/upload/v1706144110/p6uv3s57jyfatagksntg.png' alt='anônimo'/>
                     <span>Adicione uma foto (opcional)</span>
                 </label>
                 :
                 <label id={styles.updateFile}>
-                    <input type='file' accept='.png , .jpeg , .jpg'  onChange={handleFile}/>
+                    <input type='file' accept='.png , .jpeg , .jpg' value={profileImage.webkitRelativePath}  onChange={handleFile}/>
                     <span>Alterar foto</span>
                 </label>
             }

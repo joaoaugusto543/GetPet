@@ -1,7 +1,7 @@
 import Api from '../api/Api'
 import DataCreateUser from '../interfaces/DataCreateUser'
 
-async function createUser(newUser:DataCreateUser){
+export async function createUser(newUser:DataCreateUser){
     try {
 
         const formData= new FormData()
@@ -23,7 +23,7 @@ async function createUser(newUser:DataCreateUser){
     }
 }
 
-async function updateCode(email:string){
+export async function updateCode(email:string){
     try {
 
         const response=await Api.patch('/user/code',{email})
@@ -38,10 +38,3 @@ async function updateCode(email:string){
         return error.response.data
     }
 }
-
-const userServices={
-    createUser,
-    updateCode
-}
-
-export default userServices

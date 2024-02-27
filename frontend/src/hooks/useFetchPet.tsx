@@ -1,6 +1,6 @@
-import { useEffect } from "react"
-import { useAppDispatch, useAppSelector } from "../store"
-import { getPet } from "../slices/petsSlices"
+import { useEffect } from 'react'
+import { useAppDispatch, useAppSelector } from '../store'
+import { getPet, resetPet } from '../slices/petsSlices'
 
 type Props={
     id:string | undefined
@@ -13,6 +13,7 @@ function useFetchPet({id}:Props) {
  
     useEffect(()=>{
         if(id){
+            dispatch(resetPet())
             dispatch(getPet({id}))
         }
     },[id])

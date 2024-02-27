@@ -1,7 +1,7 @@
 import RegisterForm from '../../components/RegisterForm/RegisterForm'
 import styles from './Register.module.css'
-import Dog from '../../imgs/dog.png'
-import Cat from '../../imgs/cat.png'
+import Dog from '../../assets/dog.png'
+import Cat from '../../assets/cat.png'
 
 function Register() {
   return (

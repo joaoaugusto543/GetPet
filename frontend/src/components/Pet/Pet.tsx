@@ -10,7 +10,7 @@ function Pet({pet}: Props) {
 
   return (
     <div className={styles.petCard}>
-      {typeof(pet.images[0]) === 'string' && <img src={pet.images[0]} alt={pet.name} />}
+      {typeof(pet.images[0].url) === 'string' && <img src={pet.images[0].url} alt={pet.name} />}
       <span>{pet.name}</span>
       <p className={styles.description}>{pet.description}</p>
       {!pet.available ? <Link to={`/pet/${pet._id}`}>Adotar</Link> : <p className={styles.adopted}>Adotado!</p>}

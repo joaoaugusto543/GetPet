@@ -1,0 +1,69 @@
+.divImage{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    margin-right: 1em;
+    border-radius:10px ;
+    margin-bottom: 1em;
+}
+
+.divImage > img{
+    border-radius:10px ;
+    width: 100%;
+    height: 100%;
+}
+
+.before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:9px ;
+    transition: 0.5s;
+    color: transparent;
+    cursor: pointer;
+}
+
+.before > svg{
+    font-size: 25px;
+}
+
+.before:hover{
+    background-color: rgb(0, 0, 0,0.7);
+    color: #fff;
+}
+
+.position{
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    right: 0;
+    height: 30px;
+    width: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: transparent;
+    border: none;
+    padding: 0.3em;
+}
+
+.divPosition{
+    width: 100%;
+    height: 100%;
+    background-color: #069e8c;
+    border-radius: 20px;
+    width: 23px;
+    height: 23px;
+    border: 1px solid #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

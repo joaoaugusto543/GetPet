@@ -1,6 +1,6 @@
 import LoginForm from '../../components/LoginForm/LoginForm'
 import styles from './Login.module.css'
-import CatLogin from '../../imgs/catLogin.png'
+import CatLogin from '../../assets/catLogin.png'
 
 function Login() {
   return (

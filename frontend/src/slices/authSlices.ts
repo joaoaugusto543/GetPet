@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import sessionServices from '../services/sessionServices'
+import {createSession} from '../services/sessionServices'
 import DataCreateSession from '../interfaces/DataCreateSession'
 import InitialStateAuth from '../interfaces/InitialStateAuth'
-import userServices from '../services/userServices'
+import {updateCode} from '../services/userServices'
 
 
 const user: string | null = localStorage.getItem('user')
@@ -19,10 +19,10 @@ const initialState:InitialStateAuth={
 
 export const login=createAsyncThunk('auth/login',async (data:DataCreateSession,thunkApi)=>{
     
-    const res=await sessionServices.createSession(data)
+    const res=await createSession(data)
 
     if(res.error === 'Invalid code'){
-        await userServices.updateCode(data.email)
+        await updateCode(data.email)
         return thunkApi.rejectWithValue(res.error)
     }
 
