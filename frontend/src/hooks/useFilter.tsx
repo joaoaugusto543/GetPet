@@ -1,10 +1,10 @@
 import closeFilter from '../scripts/closeFilter'
 import openFilter from '../scripts/openFilter'
-import { showButtonCloseFilter, showButtonOpenFilter } from '../slices/filterSlices'
+import { showButtonCloseFilter, showButtonOpenFilter } from '../slices/buttonSlices'
 import { useAppDispatch, useAppSelector } from '../store'
 
 function useFilter() {
-    const {open}=useAppSelector((state)=>state.filter)
+    const {showButtonFilter}=useAppSelector((state)=>state.button)
     const dispatch=useAppDispatch()
 
     function handleOpenFilter(){
@@ -17,7 +17,7 @@ function useFilter() {
         closeFilter()
     }
 
-    return {open,handleCloseFilter,handleOpenFilter}
+    return {showButtonFilter,handleCloseFilter,handleOpenFilter}
 }
 
 export default useFilter

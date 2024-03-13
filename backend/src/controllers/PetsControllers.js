@@ -1,5 +1,7 @@
 const Pet= require('../models/Pet')
 const cloudinary=require('../helpers/configCloudinary')
+const sendEmail = require('../helpers/sendEmail')
+const User = require('../models/User')
 
 module.exports=class PetsContollers{
     
@@ -83,7 +85,52 @@ module.exports=class PetsContollers{
             if(!pet){
                 return res.status(404).json({error:'Pet not found'})
             }
+
+            if(pet.available){
+                return res.status(401).json({error:'Unauthorized'})
+            }
+
+            pet.candidates= pet.candidates.map(candidate => {
                 
+                candidate = {
+                    id:candidate.id,
+                    rejected:candidate.rejected
+                }
+
+                return candidate
+            })
+                
+            return res.status(200).json(pet)
+                
+        } catch (error) {
+            console.log(error)
+            return res.status(500).json({error:'Internal error'})
+        }
+
+    }
+
+    static async getPetDashboard(req,res){
+        
+        try {
+            
+            const {id}=req.params
+  
+            const pet= await Pet.findOne({_id:id})
+
+            const user = req.user
+
+            if(!pet){
+                return res.status(404).json({error:'Pet not found'})
+            }
+
+            if(user.email !== pet.user.email){
+                return res.status(401).json({error:'Unauthorized'})
+            }
+
+            if(pet.available){
+                return res.status(401).json({error:'Unauthorized'})
+            }
+     
             return res.status(200).json(pet)
                 
         } catch (error) {
@@ -98,9 +145,9 @@ module.exports=class PetsContollers{
 
             const {email}=req.user
   
-            const pets= await Pet.find().select('name images _id user')
+            const pets= await Pet.find().select('name images _id user available')
 
-            const userPets= pets.filter((pet)=>pet.user.email === email)
+            const userPets= pets.filter((pet)=>pet.user.email === email && !pet.available)
                     
             return res.status(200).json(userPets)
 
@@ -223,6 +270,10 @@ module.exports=class PetsContollers{
                 return res.status(401).json({error:'Unauthorized'})
             }
 
+            if(pet.available){
+                return res.status(401).json({error:'Unauthorized'})
+            }
+
             for(let i=0; i < pet.images.length; i++){
 
                 const urlArray = pet.images[i].url.split('/')
@@ -240,6 +291,236 @@ module.exports=class PetsContollers{
         } catch (error) {
             console.log(error)
             return res.status(500).json({error:'Internal error'})
+        }
+    }
+
+    static async addCandidates(req,res){
+        try {
+
+            const {id} = req.params
+
+            const {email,name,id:idUser,profileImage} = req.user
+
+            const pet = await Pet.findOne({_id:id})
+
+            if(!pet){
+                return res.status(422).json({error:'Pet not found'})
+            }
+
+            if(email === pet.user.email){
+                return res.status(401).json({error:'Unauthorized'})
+            }
+
+            if(pet.available){
+                return res.status(422).json({error:'Pet unavailable'})
+            }
+
+            const candidate = pet.candidates.find((candidate) => candidate.email === email)
+
+            if(candidate){
+                return res.status(422).json({error:'Already registered'})
+            }
+
+            const newCandidate = {
+                id:idUser,
+                name,
+                profileImage,
+                email,
+                rejected:false
+            }
+
+            pet.candidates.push(newCandidate)
+
+            await Pet.updateOne({_id:id},pet)
+
+            const content={
+                type:'addCandidate',
+                email:pet.user.email,
+                adopterName:name,
+                petName:pet.name
+            }
+
+            await sendEmail(content)
+
+            return res.status(200).json({
+                id:newCandidate.id,
+                reject:newCandidate.rejected
+            })
+            
+        } catch (error) {
+            console.log(error)
+            return res.status(500).json({error:'Internal error'}) 
+        }
+    }
+
+    static async acceptAdoption(req,res){
+        try {
+
+            const {idPet,idUser} = req.params
+
+            //owner
+
+            const reqUser = req.user
+ 
+            const pet = await Pet.findOne({_id:idPet})
+            
+            //person wanting to adopt
+
+            const user = await User.findOne({_id:idUser})
+
+            if(!pet){
+                return res.status(422).json({error:'Pet not found'})
+            }
+
+            if(!user){
+                return res.status(422).json({error:'User not found'})
+            }
+
+            if(reqUser.email !== pet.user.email){
+                return res.status(401).json({error:'Unauthorized'})
+            }
+
+            if(user.email === pet.user.email){
+                return res.status(401).json({error:'Unauthorized'})
+            }
+
+            if(pet.available){
+                return res.status(422).json({error:'Pet unavailable'})
+            }
+
+            const candidate = pet.candidates.find((candidate) => candidate.email === user.email)
+
+            if(!candidate){
+                return res.status(422).json({error:'Candidate not found'})
+            }
+
+            const otherCandidates = pet.candidates.filter((candidate) => candidate.id !== user.id)
+
+            const emailOfOtherCandidates = otherCandidates.map((candidate)=>candidate.email)
+
+            if(emailOfOtherCandidates.length !== 0){
+
+                const content={
+                    type:'declineAdoption',
+                    email:emailOfOtherCandidates,
+                    petName:pet.name
+                }
+
+                await sendEmail(content)
+            }
+
+            pet.candidates=[]
+
+            pet.adopter = {
+                id:user.id,
+                email:user.email
+            }
+
+            pet.available = true
+
+            await Pet.updateOne({_id:pet.id},pet)
+
+            const content = {
+                type:'acceptAdoption',
+                petName:pet.name,
+                email:user.email
+            }
+
+            await sendEmail(content)
+
+            return res.status(200).json({id:pet.id})
+
+            
+        } catch (error) {
+            console.log(error)
+            return res.status(500).json({error:'Internal error'}) 
+        }
+    }
+
+    static async rejectAdoption(req,res){
+        try {
+
+            const {idPet,idUser} = req.params
+
+            //owner
+
+            const reqUser = req.user
+
+            const pet = await Pet.findOne({_id:idPet})
+
+            //person wanting to adopt
+
+            const user = await User.findOne({_id:idUser})
+
+            if(!pet){
+                return res.status(422).json({error:'Pet not found'})
+            }
+
+            if(!user){
+                return res.status(422).json({error:'User not found'})
+            }
+
+            if(reqUser.email !== pet.user.email){
+                return res.status(401).json({error:'Unauthorized'})
+            }
+
+            if(user.email === pet.user.email){
+                return res.status(401).json({error:'Unauthorized'})
+            }
+
+            if(pet.available){
+                return res.status(422).json({error:'Pet unavailable'})
+            }
+
+            const candidate = pet.candidates.find((candidate) => candidate.email === user.email)
+
+            if(!candidate){
+                return res.status(422).json({error:'Candidate not found'})
+            }
+
+            const content={
+                type:'declineAdoption',
+                email:candidate.email,
+                petName:pet.name
+            }
+
+            pet.candidates=pet.candidates.map((candidate) =>{
+
+                if(candidate.id === idUser){
+                    candidate.rejected=true
+                }
+                
+                return candidate
+
+            })
+
+            await sendEmail(content)
+   
+            await Pet.updateOne({_id:pet.id},pet)
+
+            return res.status(200).json({id:candidate.id})
+
+            
+        } catch (error) {
+            console.log(error)
+            return res.status(500).json({error:'Internal error'}) 
+        }
+    }
+
+    static async getMyPets(req,res){
+        try {
+
+            const user = req.user
+
+            const pets = await Pet.find().select('name images adopter description')
+
+            const myPets = pets.filter((pet)=> pet.adopter && pet.adopter.email === user.email)
+
+            return res.status(200).json(myPets)
+            
+        } catch (error) {
+            console.log(error)
+            return res.status(500).json({error:'Internal error'}) 
         }
     }
 

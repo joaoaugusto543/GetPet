@@ -52,3 +52,50 @@
     background-color: #a5ff36;
     
 }
+
+.errorLogin{
+    color: red;
+    font-size: 18px;
+    margin: 0.5em 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+@media(max-width:1300px){
+    .loginForm > label{
+        width: 60%;
+    }
+}
+
+@media(max-width:700px){
+    .loginForm > label{
+        width: 90%;
+    }
+
+    .loginForm > label > span{
+        font-size: 18px;
+    }
+
+    .loginForm > input[type='submit']{
+        height: 25px;
+        width: 100px;
+        font-size: 12px;
+    }
+
+    .errorLogin{
+        font-size: 16px;
+    }
+}
+
+@media(max-width:400px){
+    .loginForm > label{
+        width: 100%;
+    }
+
+    .loginForm > label > span{
+        font-size: 16px;
+    }
+
+    .loginForm > input[type='submit']{
+        width: 80px;
+    }
+}

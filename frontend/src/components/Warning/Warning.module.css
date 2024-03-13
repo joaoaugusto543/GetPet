@@ -54,3 +54,39 @@
 .buttons > button:first-child:hover{
     background-color: #a9ff40;
 }
+
+@media(max-width:900px){
+    
+    .box{
+        height: 250px;
+        width: 300px;
+    }
+
+    .box > p{
+        font-size: 16px;
+    }
+    
+    .buttons > button{
+        width: 80px;
+        height: 23px;
+        font-size: 12px;
+    }
+    
+}
+
+@media(max-width:400px){
+    .box{
+        height: 200px;
+        width: 250px;
+    }
+
+    .box > p{
+        font-size: 14px;
+    }
+    
+    .buttons > button{
+        width: 60px;
+        height: 20px;
+        font-size: 10px;
+    }
+}

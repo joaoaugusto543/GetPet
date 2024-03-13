@@ -15,7 +15,7 @@ type Props={
 
 function ImageCrop({image,handleClose,setImages,type}:Props) {
 
-  const [crop,setCrop]=useState<Crop>({unit:'px',x:0,y:0,width:400,height:400})
+  const [crop,setCrop]=useState<Crop>({unit:'px',x:0,y:0,width:200,height:200})
   
   const previewImageRef=useRef<HTMLCanvasElement>(null)
   
@@ -35,13 +35,13 @@ function ImageCrop({image,handleClose,setImages,type}:Props) {
           <div className={styles.divPreview}>
             <canvas className={styles.previewImage} ref={previewImageRef}/>
           </div>
-          <ReactCrop aspect={1} locked crop={crop} ruleOfThirds onChange={(e)=>setCrop(e)} onComplete={handleOnCropComplete}>
+          <ReactCrop aspect={1} crop={crop} ruleOfThirds onChange={(e)=>setCrop(e)} onComplete={handleOnCropComplete}>
               <img onLoad={(e)=>onLoadCrop(e,imageRef,image,previewImageRef)} className={styles.image} src={URL.createObjectURL(image)} ref={imageRef} alt='crop' />
           </ReactCrop>
         </div>
         <div className={styles.commands}>
             <button onClick={handleClose}>Cancelar</button>
-            <button onClick={()=>handleAddImage(previewImageRef.current)}>Editar</button>
+            <button onClick={()=>handleAddImage(previewImageRef.current)}>Salvar</button>
         </div>
       </div>
     </div>

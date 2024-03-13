@@ -15,7 +15,7 @@ class App{
 
     middlewares(){
         this.server.use(express.json())
-        this.server.use(cors())
+        this.server.use(cors({origin:'http://localhost:5173'}))
     }
 
     routes(){

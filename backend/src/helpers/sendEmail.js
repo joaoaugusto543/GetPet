@@ -39,6 +39,27 @@ async function sendEmail(content){
         emailToBeSent.html=`<img src='https://res.cloudinary.com/dezsbjgjj/image/upload/v1706301527/aptsy487ylzpbrghue9e.png' alt='checked'/>`
     }
 
+    if(content.type === 'addCandidate'){
+        emailToBeSent.subject=`Alguém deseja adotador o(a) ${content.petName}`
+        emailToBeSent.text=`O usuário ${content.adopterName} se candidatou para adotar o(a) ${content.petName}`
+    }
+
+    if(content.type === 'declineAdoption'){
+        emailToBeSent.subject=`Seu pedido para adotar o(a) ${content.petName} foi recusado`
+        emailToBeSent.html=`<img src='https://res.cloudinary.com/dezsbjgjj/image/upload/v1709304423/br2dthbm7fyvtrlh1qkg.png' alt='checked'/>`
+    }
+    
+    if(content.type === 'acceptAdoption'){
+        emailToBeSent.subject=`Seu pedido para adotar o(a) ${content.petName} foi aceito`
+        emailToBeSent.html=`<img src='https://res.cloudinary.com/dezsbjgjj/image/upload/v1709304302/srkyqcmvmtw04dcpqnin.png' alt='checked'/>`
+    }
+
+    if(content.type === 'message'){
+        emailToBeSent.subject=`Mensagem do ${content.userName} sobre adoção do(a) ${content.petName}`
+        emailToBeSent.text=`${content.message}\n\nNão responda esse e-mail, entre em contato pelo e-mail ${content.userEmail}\n\nobrigado :)`
+    }
+
+
     await new Promise((resolve, reject) => {
     // send mail
         transporter.sendMail(emailToBeSent, (err, info) => {

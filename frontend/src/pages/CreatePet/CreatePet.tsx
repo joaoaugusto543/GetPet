@@ -1,7 +1,14 @@
 import FormPet from '../../components/FormPet/FormPet'
+import useCloseNavBar from '../../hooks/useCloseNavBar'
+import useTitle from '../../hooks/useTitle'
 import styles from './CreatePet.module.css'
 
 function CreatePet() {
+
+  useTitle({title:'Criar Pet'})
+
+  useCloseNavBar()
+
   return (
     <section className={styles.createPet}>
         <h1>Criar Pet</h1>

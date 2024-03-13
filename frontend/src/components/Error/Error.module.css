@@ -1,0 +1,13 @@
+.error{
+    color: red;
+    font-weight: bold;
+    margin-top: 0.5em;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+@media(max-width:450px){
+    .error{
+        font-size: 12px;
+    }
+}

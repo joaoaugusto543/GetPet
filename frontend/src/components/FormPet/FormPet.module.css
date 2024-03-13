@@ -123,3 +123,79 @@
     font-size: 18px;
     font-family: 'Salsa', cursive;
 }
+
+@media(max-width:1414px){
+
+    .formPet > label{
+        width: 60%;
+    }
+    
+    .containerImages{
+        width: 60%;
+    }
+
+}
+
+@media(max-width:800px){
+    .formPet > label{
+        width: 80%;
+    }
+    
+    .containerImages{
+        width: 80%;
+    }
+ 
+    .formPet > label > span{
+        font-size: 16px;
+    }
+
+    .formPet > input{
+        width: 100px;
+        height: 25px;
+        font-size: 12px;
+    }
+       
+    
+}
+
+@media(max-width:600px){
+    .formPet > label{
+        width: 100%;
+    }
+    
+    .containerImages{
+        width: 100%;
+    }
+}
+
+@media(max-width:500px){
+    #file > span{
+        width: 130px;
+        font-size: 12px;
+    }
+    
+    #file > span > svg{
+        font-size: 14px;
+        margin-right: 0.2em;
+    }
+
+    .containerImages > span{
+        font-size: 14px;
+    }
+
+    .success{
+        font-size: 16px;
+    }
+}
+
+
+@media(max-width:400px){
+    .formPet > label > span{
+        font-size: 14px;
+    }
+
+    .formPet > input{
+        font-size: 12px;
+    }
+
+}

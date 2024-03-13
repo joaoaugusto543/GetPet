@@ -93,3 +93,58 @@
     max-height: 700px;
 }
 
+@media(max-width:900px){
+    .box{
+        max-width: 90%;
+        min-width: 90%;
+    }
+
+    .image{
+        min-height: 200px;
+        min-width: 200px;
+        max-width: 400px;
+        max-height: 400px;
+    }
+
+    .divPreview{
+        width: 100px;
+        height: 100px;
+    }
+
+    .previewImage{
+        height: 100px;
+        width: 100px;
+    }
+}
+
+@media(max-width:550px){
+            
+    .box > h1{
+        font-size: 25px;
+    }
+
+    .commands > button{
+        width: 90px;
+        height: 25px;
+        font-size: 12px;
+    }
+    
+}
+
+@media(max-width:450px){
+    .imageCrop{
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .divPreview{
+       margin-right: 0;
+       margin-top: 1em;
+    }
+
+    .box{
+        max-width: 95%;
+        min-width: 95%;
+    }
+}

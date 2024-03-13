@@ -1,0 +1,104 @@
+.petDashboard{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 4em;
+}
+
+.informations{
+    margin-top: 2em;
+    width: 900px;
+}
+
+.informations h1{
+    font-size: 45px;
+    font-family: 'Salsa', cursive;
+    color: #069e8c;
+    margin-bottom: 0.5em;
+}
+
+.description{
+    font-size: 22px;
+    font-family: 'Crimson Text', serif;
+    border-bottom: 1px solid rgb(0, 0, 0,0.5);
+    padding-bottom: 1em;
+}
+
+.candidateTitle{
+    margin-top: 1em;
+    width: 900px;
+    font-size: 25px;
+    font-family: 'Salsa', cursive;
+    color: #069e8c;
+    margin-bottom: 0.7em;
+}
+
+@media(max-width:1027px){
+    .petDashboard{
+        padding: 2em;
+    }
+
+
+}
+
+@media(max-width:900px){
+
+    .informations{
+        width: 100%;
+    }
+    
+    .informations h1{
+        font-size: 35px;
+    }
+
+    .candidateTitle{
+        font-size: 20px;
+    }
+    
+    .description{
+        font-size: 20px;
+    }
+
+    .candidateTitle{
+       width: 100%;
+    }
+    
+}
+
+
+@media(max-width:605px){
+
+    .informations h1{
+        font-size: 25px;
+    }
+
+    .candidateTitle{
+        font-size: 18px;
+    }
+    
+    .description{
+        font-size: 18px;
+    }
+   
+}
+
+@media(max-width:500px){
+  
+    .informations h1{
+        font-size: 20px;
+    }
+    
+    .description{
+        font-size: 16px;
+    }
+
+    .candidateTitle{
+        font-size: 18px;
+    }
+
+    
+
+}
+

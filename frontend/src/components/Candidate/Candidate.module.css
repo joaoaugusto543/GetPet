@@ -1,0 +1,113 @@
+.candidate{
+    width: 900px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em 0;
+}
+
+.candidate > img{
+    width: 60px;
+    height: 60px;
+    border-radius:40px ;
+}
+
+.candidate > p{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    color: #069e8c;
+    max-width: 150px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.buttons > button{
+    color: #99db49;
+    padding: 0.5em 1em;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    border: 1px solid #222;
+    background-color: transparent;
+    color: #222;
+    transition: 0.5s;
+    width: 100px;
+}
+
+.buttons > button{
+    margin-left: 1em;
+    cursor: pointer;
+}
+
+.buttons > button:first-child{
+    margin-left:0 ;
+}
+
+.buttons > button:first-child:hover{
+    background-color: #99db49;
+    color: #069e8c;
+    font-weight: bold;
+}
+
+.buttons > button:first-child + button:hover{
+    background-color: red;
+    color: #fff;
+}
+
+@media(max-width:900px){
+    .candidate{
+        width: 100%;
+    }
+        
+    .candidate > p{
+        font-size: 18px;
+    }
+    
+    .buttons > button{
+        padding: 0.5em 0.5em;
+        font-size: 12px;
+        width: 70px;
+    }
+
+    .candidate > img{
+        width: 50px;
+        height: 50px;
+    }
+    
+}
+
+@media(max-width:530px){
+    .candidate{
+        flex-direction: column;
+    }
+
+    .candidate > img{
+        width: 60px;
+        height: 60px;
+    }
+
+    .candidate > p{
+        margin: 1em 0;
+    }
+
+    .buttons > button{
+        padding: 0.3em 0.3em;
+        font-size: 11px;
+        width: 60px;
+    }
+}
+
+@media(max-width:300px){
+    .candidate{
+        flex-direction: column;
+    }
+
+    .candidate > img{
+        width: 50px;
+        height: 50px;
+    }
+
+    .candidate > p{
+        font-size: 16px;
+    }
+}

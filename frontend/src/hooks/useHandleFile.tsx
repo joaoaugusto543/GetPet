@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Dispatch, SetStateAction } from 'react'
 
 type Props={
-    set:Function
+    set:Dispatch<SetStateAction<File | null>>
 }
 
 function useHandleFile({set}:Props) {

@@ -1,0 +1,175 @@
+.registerEditUser > label > select > option{
+    background-color: aliceblue;
+    color: #222;
+}
+
+.registerEditUser{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.divForm{
+    margin-top: 2em;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 3;
+}
+
+.registerEditUser > label{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 1em;
+    width: 40%;
+}
+
+.registerEditUser > label > span{
+    font-size: 20px;
+    font-family: 'Salsa', cursive;
+    color: #99db49;
+    font-weight: bold;
+    margin-bottom: 0.1em;
+}
+
+.registerEditUser > label > input[type='text'],.registerEditUser > label > input[type='email'],.registerEditUser > label > input[type='password'], .registerEditUser > label > select{
+    border: none;
+    border-bottom:1px solid #fff ;
+    height: 30px;
+    color: #fff;
+    background-color: transparent;
+}
+
+.registerEditUser > label > input[type='text']::placeholder,.registerEditUser > label > input[type='email']::placeholder,.registerEditUser > label > input[type='password']::placeholder{
+    color: #fff;
+}
+
+.registerEditUser > input[type='submit']{
+    background-color: #99db49;
+    border: none;
+    width: 130px;
+    height: 30px;
+    margin-top: 1em;
+    border-radius: 40px;
+    font-size: 14px;
+    color: #069e8c;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.registerEditUser > input[type='submit']:hover{
+    background-color: #a5ff36;
+    
+}
+
+.anonymous{
+    background-color: #979797;
+    border-radius:70px ;
+    width: 130px;
+    height: 130px;
+    cursor: pointer;
+}
+
+.preview{
+    border-radius:70px ;
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
+}
+
+#updateFile{
+    background-color: #99db49;
+    width: 130px;
+    height: 25px;
+    margin: 1.5em 0;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#updateFile > span{
+    color: #fff;
+    font-size: 14px;
+    font-weight: normal;
+    color: #069e8c;
+}
+
+@media(max-width:1130px){
+    .preview{
+        border-radius:70px ;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+}
+
+@media(max-width:800px){
+    .preview{
+        border-radius:70px ;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+    }
+    
+    .registerEditUser > label{
+        width: 60%;
+    }
+    
+    .registerEditUser > label > span{
+        font-size: 18px;
+    }
+
+    .registerEditUser > input[type='submit']{
+        width: 100px;
+        height: 25px;
+        font-size: 12px;
+    }
+    
+    #updateFile{
+        width: 100px;
+    }
+    
+    #updateFile > span{
+        font-size: 12px;
+    }
+}
+
+@media(max-width:500px){
+    .preview{
+        border-radius:70px ;
+        width: 90px;
+        height: 90px;
+        object-fit: cover;
+    }
+    
+    .registerEditUser > label{
+        width: 80%;
+    }
+    
+    .registerEditUser > label > span{
+        font-size: 14px;
+    }
+
+    .registerEditUser > input[type='submit']{
+        width: 90px;
+    }
+
+    .registerEditUser > label > input[type='text'],.registerEditUser > label > input[type='email'],.registerEditUser > label > input[type='password'], .registerEditUser > label > select{
+       font-size: 12px;
+    }
+    
+}
+
+@media(max-width:280px){
+    .divForm{
+       min-width: 280px;
+    }
+}

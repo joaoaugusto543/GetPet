@@ -10,7 +10,7 @@ function createPetValidation(){
         body('size')
             .isString()
             .withMessage('Size is required')
-            .custom((value,{req})=>{
+            .custom((value)=>{
 
                 if(value !== 'Pequeno' && value !=='Grande' && value !== 'Médio'){
                     throw new Error('Invalid size')
@@ -20,6 +20,8 @@ function createPetValidation(){
             }),
         body('species')
             .isString()
+            .withMessage('Specie is required')
+            .isLength({min:1, max:12})
             .withMessage('Invalid specie'),
         body('description')
             .isString()

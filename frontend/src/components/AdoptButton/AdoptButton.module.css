@@ -1,0 +1,54 @@
+.button,.loading{
+    width: 120px;
+    height: 30px;
+    background-color: #069e8c;
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+}
+
+.button{
+    cursor: pointer;
+}
+
+.loading{
+    cursor: no-drop;
+}
+
+.text,.reject{
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    margin-top: 1em;
+}
+
+.reject{
+    color: red;
+}
+
+.text{
+    color:#069e8c ;
+}
+
+@media(max-width:960px){
+    .button,.loading{
+        margin-top: 1em;
+    }
+
+    .text,.reject{
+        font-size: 16px;
+    }
+}
+
+@media(max-width:500px){
+    .button,.loading{
+        width: 100px;
+        height: 25px;
+    }
+}
+
+@media(max-width:400px){
+    .text,.reject{
+        font-size: 14px;
+    }
+}
