@@ -34,3 +34,22 @@
 .buttonCloseFilter > svg{
     color: #069e8c;
 }
+
+@media(max-width:960px){
+    .buttonOpenFilter,.buttonCloseFilter{
+        z-index: 4;
+    }
+}
+
+@media(max-width:447px){
+    .buttonOpenFilter,.buttonCloseFilter{
+        height: 45px;
+        width: 45px;
+        background-color: #99db49;
+    }
+    
+    .buttonOpenFilter svg,.buttonCloseFilter svg{
+        font-size: 18px;
+        color: #069e8c;
+    }
+}

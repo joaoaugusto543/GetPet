@@ -1,0 +1,13 @@
+.candidates > div{
+    border-bottom: 1px solid #000;
+}
+
+.candidates > div:last-child{
+    border: none;
+}
+
+@media(max-width:900px){
+    .candidates{
+        width: 100%;
+    }
+}

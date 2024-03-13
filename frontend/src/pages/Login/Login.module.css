@@ -22,6 +22,7 @@
     right: 20%;
     animation: toApperCatLogin 0.5s ease-out normal;
     filter:  drop-shadow(3px 2px 3px #333);
+    z-index: -1;
 }
 
 @keyframes toApperCatLogin{
@@ -31,5 +32,34 @@
 
     from{
         transform: translateY(400px);
+    }
+}
+
+@media(max-width:900px){
+    .cat{
+        width: 500px;
+        right: 0%;
+    }
+}
+
+@media(max-width:700px){
+    .login h1{
+        font-size: 35px;
+    }
+}
+
+@media(max-height:600px){
+    .cat{
+        display: none;
+    }
+}
+
+@media(max-width:400px){
+    .login{
+        padding: 5em 1em;
+    }
+
+    .login h1{
+        font-size: 25px;
     }
 }

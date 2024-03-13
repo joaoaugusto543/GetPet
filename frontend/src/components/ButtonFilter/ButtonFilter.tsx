@@ -5,11 +5,11 @@ import useFilter from '../../hooks/useFilter'
 
 function ButtonFilter() {
 
-  const {open,handleCloseFilter,handleOpenFilter}=useFilter()
+  const {showButtonFilter,handleCloseFilter,handleOpenFilter}=useFilter()
 
   return (
     <>
-      {!open ? 
+      {!showButtonFilter ? 
         <button className={styles.buttonOpenFilter} onClick={handleOpenFilter}><FaFilter/></button> 
         : 
         <button className={styles.buttonCloseFilter} onClick={handleCloseFilter}><FaFilterCircleXmark /></button>

@@ -12,7 +12,7 @@
 }
 
 .img,.name,.buttons > div{
-    background-color: rgba(128, 128, 128, 0.493);
+    background-color: rgba(184, 184, 184, 0.493);
 }
 
 .img{
@@ -39,6 +39,10 @@
     margin-right: 1em;
 }
 
+.buttons > div:last-child{
+    margin-left: 1em;
+}
+
 @keyframes blink{
     0%{
         opacity: 1;
@@ -58,5 +62,88 @@
 
     100%{
         opacity: 1;
+    }
+}
+
+@media(max-width:1200px){
+
+    .loader{
+        height: 240px;
+    }
+
+    .name{
+        width: 200px;
+        height: 40px;
+    }
+    
+    .buttons > div{
+        width: 90px;
+    }
+
+}
+
+@media(max-width:960px){
+
+    .loader{
+        height: 210px;
+    }
+
+    .img{
+        height: 170px;
+        width: 170px;
+    }
+
+    .name{
+        width: 150px;
+        height: 30px;
+    }
+    
+    .buttons > div{
+        width: 70px;
+        height: 30px;
+    }
+}
+
+@media(max-width:800px){
+
+    .loader{
+        height: 170px;
+    }
+
+    .img{
+        height: 130px;
+        width: 130px;
+    }
+
+    .name{
+        width: 120px;
+        height: 25px;
+    }
+    
+    .buttons > div{
+        width: 55px;
+        height: 25px;
+    }
+}
+
+@media(max-width:570px){
+
+    .loader{
+        flex-direction: column;
+        height: inherit;
+    }
+
+    .img{
+        height: 130px;
+        width: 130px;
+    }
+
+    .name{
+       margin: 1.5em 0;
+    }
+    
+    .buttons > div{
+        width: 55px;
+        height: 25px;
     }
 }

@@ -1,0 +1,100 @@
+.loader{
+    height: 250px;
+    width: 100%;
+    background-color: rgba(128, 128, 128, 0.199);
+    height: 250px;
+    padding: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 2em;
+    animation: blink 1.5s infinite ease;
+}
+
+.img,.name,.buttons > div{
+    background-color: rgba(184, 184, 184, 0.493);
+}
+
+.img{
+    width: 200px;
+    height: 200px;
+    border-radius: 30px;
+}
+
+.name{
+    width: 300px;
+    height: 40px;
+    margin-left: 2em;
+}
+
+@keyframes blink{
+    0%{
+        opacity: 1;
+    }
+
+    25%{
+        opacity: 0.7;
+    }
+
+    50%{
+        opacity: 0.5;
+    }
+
+    75%{
+        opacity: 0.7;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+@media(max-width:960px){
+
+    
+    .img{
+        width: 120px;
+        height: 120px;
+    }
+
+    .loader{
+        height: 150px;
+    }
+        
+    .name{
+       height: 30px;
+    }
+    
+  
+
+}
+
+@media(max-width:700px){
+
+    .img{
+        width: 90px;
+        height: 90px;
+    }
+
+    .name{
+        height: 25px;
+        margin-left: 1em;
+        width: 150px;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .img{
+        width: 70px;
+        height: 70px;
+        border-radius: 30px;
+        border-radius: 10px;
+    }
+
+    .name{
+        width: 100px;
+    }
+
+}

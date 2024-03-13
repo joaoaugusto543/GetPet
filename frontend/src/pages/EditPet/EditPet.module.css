@@ -1,4 +1,4 @@
-.createPet{
+.editPet{
     width: 100%;
     display: flex;
     align-items: center;
@@ -6,7 +6,7 @@
     padding: 3em;
 }
 
-.createPet > h1{
+.editPet > h1{
     font-size: 40px;
     font-family: 'Salsa', cursive;
     color: #99db49;
@@ -25,7 +25,7 @@
     z-index: -1;
 }
 
-.createPet::before{
+.editPet::before{
     content: '';
     position: fixed;
     background-color: #222;
@@ -35,4 +35,23 @@
     left: 0;
     z-index: 1;
     opacity: 0.5;
+}
+
+
+@media(max-width:800px){
+    .editPet > h1{
+        font-size: 30px;
+    }
+}
+
+@media(max-width:600px){
+    .editPet > h1{
+        font-size: 25px;
+    }
+}
+
+@media(max-width:400px){
+    .editPet{
+        padding: 1em;
+    }
 }

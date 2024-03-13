@@ -5,6 +5,7 @@ import styles from './Code.module.css'
 import useHandleCode from '../../hooks/useHandleCode'
 import { IoMdCloseCircle } from 'react-icons/io'
 
+
 type Props={
     email:string,
     password:string,
@@ -14,7 +15,7 @@ type Props={
 function Code({email,password,handleClose}:Props) {
 
   const [code,setCode]=useState<string>('')
-  const {loading} = useAppSelector(state => state.auth)
+  const {loading,error} = useAppSelector(state => state.auth)
   const dispatch=useAppDispatch()
 
   const handleCode = useHandleCode({setCode})
@@ -35,11 +36,12 @@ function Code({email,password,handleClose}:Props) {
   return (
     <section className={styles.code}>
         <div className={styles.boxCode}>  
-            <p>Enviamos um código de verificação de cinco digítos para o e-mail {email}</p>
+            <p className={styles.text}>Enviamos um código de verificação de cinco digítos para o e-mail {email}</p>
             <form onSubmit={handleSubmit}>
                 <label>
                     <span>Código:</span>
                     <input type='text' placeholder='Digite o código de verificação' maxLength={5} value={code} onChange={handleCode}/>
+                    {typeof(error) === 'string' && <p className={styles.error}>Código incorreto</p>}
                 </label>
                 {!loading ? <input type='submit' value='Enviar' /> : <input type='submit' disabled value='Aguarde...' />}
             </form>

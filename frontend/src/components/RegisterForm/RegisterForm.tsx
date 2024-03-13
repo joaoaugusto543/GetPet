@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import SelectUfs from '../SelectUfs/SelectUfs'
 import styles from './RegisterForm.module.css'
 import SelectCities from '../SelectCities/SelectCities'
@@ -9,9 +9,15 @@ import { useAppDispatch, useAppSelector } from '../../store'
 import NewUserRegister from '../../interfaces/newUserRegister'
 import useCode from '../../hooks/useCode'
 import Code from '../Code/Code'
+import useFetchErrorsUser from '../../hooks/useFetchErrorsUser'
+import Error from '../Error/Error'
+import { ErrorsUserInterface } from '../../interfaces/ErrorsUserInterface'
 
 function RegisterForm() {
 
+    const [errosUserObject,setErrosUserObject] = useState<ErrorsUserInterface>({})
+
+    const {error,errorCity,errorConfirmPassword,errorEmail,errorName,errorPassword,errorPhone,errorUf} = useFetchErrorsUser({errosUserObject,setErrosUserObject})
     
     const [name,setName]=useState<string>('')
     const [email,setEmail]=useState<string>('')
@@ -22,14 +28,11 @@ function RegisterForm() {
     const [profileImage,setProfileImage]=useState<File | null>(null)
     const [phone,setPhone]=useState<string>('')
     
-    const previewImageRef=useRef(null)
-    
     const handleFile=useHandleFile({set:setProfileImage})
     const handlePhone=useHandlePhone({setPhone,phone})
     
     const {showFormCode,handleOpen,handleClose}=useCode()
 
-    
     const dispatch=useAppDispatch()
     
     const {loading,success}=useAppSelector(state => state.user)
@@ -65,13 +68,13 @@ function RegisterForm() {
     }
 
     dispatch(createUserThunk(newUser))
-  }  
-
-
+  }
+  
   return (
     <>
         {showFormCode && <Code email={email} password={password} handleClose={handleClose}/>}
-        {profileImage && <img ref={previewImageRef} className={styles.preview} src={URL.createObjectURL(profileImage)} alt={profileImage.name} />}
+        {error && <p className={styles.singleError}>{error}</p>}
+        {profileImage && <img className={styles.preview} src={URL.createObjectURL(profileImage)} alt={profileImage.name} />}
         <form className={styles.registerForm} onSubmit={handleSubmit}>
             {!profileImage ?
                 <label id={styles.file} className={styles.file}>
@@ -89,30 +92,37 @@ function RegisterForm() {
             <label>
                 <span>Nome:</span>
                 <input type='text' placeholder='Digite seu nome' value={name} onChange={(e)=>setName(e.target.value)} />
+                <Error error={errorName}/>
             </label>
             <label>
                 <span>E-mail:</span>
                 <input type='email' placeholder='Digite seu e-mail' value={email} onChange={(e)=>setEmail(e.target.value)} />
+                <Error error={errorEmail}/>
             </label> 
             <label>
                 <span>Telefone:</span>
                 <input type='text' placeholder='Digite seu telefone(opcional)' value={phone} onChange={handlePhone} />
+                <Error error={errorPhone}/>
             </label>
             <label>
                 <span>Uf:</span>
                 <SelectUfs uf={uf} setUf={setUf}/>
+                <Error error={errorUf}/>
             </label> 
             <label>
                 <span>Cidade</span>
                 <SelectCities city={city} setCity={setCity} uf={uf}/>
+                <Error error={errorCity}/>
             </label>
             <label>
                 <span>Senha:</span>
                 <input type='password' placeholder='Digite sua senha' value={password} onChange={(e)=>setPassword(e.target.value)} />
+                <Error error={errorPassword}/>
             </label>
             <label>
                 <span>Confirme sua senha:</span>
                 <input type='password' placeholder='Confirme sua senha' value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)} />
+                <Error error={errorConfirmPassword}/>
             </label>
             {!loading ? <input type='submit' value='Cadastrar'/> : <input type='submit' disabled value='Aguarde...'/>}
         </form>

@@ -5,3 +5,15 @@
     flex-wrap: wrap;
     padding: 3em;
 }
+
+@media(max-width:959px){
+    .pets{
+        justify-content: center;
+    }
+}
+
+@media(max-width:447px){
+    .pets{
+        padding: 3em 0.5em;
+    }
+}

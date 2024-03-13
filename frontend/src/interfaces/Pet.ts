@@ -1,3 +1,4 @@
+import { CandidateInterface } from './CandidateInterface'
 import ImagesPet from './imagesPet'
 
 interface PetInterface{
@@ -8,6 +9,7 @@ interface PetInterface{
     available:boolean,
     species:string,
     description:string,
+    candidates: CandidateInterface[],
     user:{
         id:string,
         name:string
@@ -18,7 +20,7 @@ interface PetInterface{
         uf:string
     },
     adopter:null | {
-        name:string
+        id:string
     }
 
 }

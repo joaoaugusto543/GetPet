@@ -20,6 +20,8 @@ function updatePetValidation(){
             }),
         body('species')
             .isString()
+            .withMessage('Specie is required')
+            .isLength({min:1, max:12})
             .withMessage('Invalid specie'),
         body('description')
             .isString()

@@ -1,0 +1,98 @@
+.myPet{
+    display: flex;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.myPet > img{
+    width: 150px;
+    height: 150px;
+    border-radius: 30px;
+}
+
+.information{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 150px;
+    margin-left: 2em;
+}
+
+.information > h2{
+    font-size: 35px;
+    font-family: 'Salsa', cursive;
+    color: #99db49;
+    margin-bottom: 0.2em;
+}
+
+.information > p{
+    font-family: 'Crimson Text', serif;
+    font-size: 20px;
+    width: 100%;
+    color: #222;
+    text-align: justify;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media(max-width:960px){
+
+    
+    .myPet > img{
+        width: 120px;
+        height: 120px;
+    }
+
+    .information{
+        height: 120px;
+    }
+        
+    .information > h2{
+        font-size: 25px;
+    }
+    
+    .information > p{
+        font-size: 18px;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .myPet{
+        margin-bottom: 1em;
+    }
+
+    .myPet > img{
+        width: 90px;
+        height: 90px;
+        border-radius: 30px;
+    }
+
+    .information{
+        height: 90px;
+        margin-left: 1em;
+    }
+
+    .information > h2{
+        font-size: 20px;
+    }
+    
+    .information > p{
+        font-size: 16px;
+    }
+}
+
+@media(max-width:500px){
+
+    .myPet > img{
+        width: 70px;
+        height: 70px;
+        border-radius: 30px;
+        border-radius: 10px;
+    }
+
+}

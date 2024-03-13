@@ -13,7 +13,7 @@ export async function showPets(){
         
     } catch (error:any) {
        console.log(error)
-       return error.response.data.error
+       return error.response.data
     }
 }
 
@@ -28,7 +28,7 @@ export async function showPet(id:string){
         
     } catch (error:any) {
        console.log(error)
-       return error.response.data.error
+       return error.response.data
     }
 }
 
@@ -45,7 +45,7 @@ export async function showPetsByUser(token:string){
         
     } catch (error:any) {
        console.log(error)
-       return error.response.data.error
+       return error.response.data
     }
 }
 
@@ -69,7 +69,7 @@ export async function addImage(token:string,id:string,image:File){
         
     } catch (error:any) {
        console.log(error)
-       return error.response.data.error
+       return error.response.data
     }
 }
 
@@ -139,3 +139,91 @@ export async function deletePet(token:string,id:string){
        return error.response.data
     }
 }
+
+export async function addCandidates(token:string,id:string){
+    
+    try {
+
+        Api.defaults.headers.authorization=`Bearer ${token}`
+        
+        const response= await Api.patch(`/pet/addCandidate/${id}`)
+        
+        const data= response.data
+
+        return data
+        
+    } catch (error:any) {
+       console.log(error)
+       return error.response.data
+    }
+}
+
+export async function getPetDashboard(id:string,token:string){
+    try {
+
+        Api.defaults.headers.authorization=`Bearer ${token}`
+        
+        const response= await Api.get(`/pet/dashboard/${id}`)
+
+        const data=organizeImages(response.data)
+
+        return data
+        
+    } catch (error:any) {
+       console.log(error)
+       return error.response.data
+    }
+}
+
+export async function acceptAdoption(idPet:string,idUser:string,token:string){
+    try {
+
+        Api.defaults.headers.authorization=`Bearer ${token}`
+        
+        const response= await Api.patch(`/pet/accept/${idPet}/${idUser}`)
+
+        const data=response.data
+
+        return data
+        
+    } catch (error:any) {
+       console.log(error)
+       return error.response.data
+    }
+}
+
+export async function rejectAdoption(idPet:string,idUser:string,token:string){
+    try {
+
+        Api.defaults.headers.authorization=`Bearer ${token}`
+      
+        const response= await Api.patch(`/pet/reject/${idPet}/${idUser}`)
+
+        const data=response.data
+
+        return data
+        
+    } catch (error:any) {
+       console.log(error)
+       return error.response.data
+    }
+}
+
+export async function getMyPets(token:string){
+    try {
+
+        Api.defaults.headers.authorization=`Bearer ${token}`
+      
+        const response= await Api.get('/pet/myPets')
+
+        const data=response.data
+
+        return data
+        
+    } catch (error:any) {
+       console.log(error)
+       return error.response.data
+    }
+}
+
+

@@ -65,3 +65,49 @@
 .buttons input:first-child{
     margin-right: 0.5em;
 }
+
+@media(max-width:549px){
+    .filterForm label{
+        width: 90%;
+    }
+}
+
+@media(max-width:470px){
+        
+    .filterForm span{
+        font-size: 16px;
+    }
+    
+    .filterForm label > input[type='text'], .filterForm label > select{
+        font-size: 12px;
+    }
+
+    .filterForm input[type='submit']{
+        height: 23px;
+        width: 100px;
+        font-size: 12px;
+    }
+    
+}
+
+@media(max-width:339px){
+
+    .filterForm label{
+        width: 100%;
+    }
+        
+    .filterForm span{
+        font-size: 16px;
+    }
+    
+    .filterForm label > input[type='text'], .filterForm label > select{
+        font-size: 12px;
+    }
+
+    .filterForm input[type='submit']{
+        height: 23px;
+        width: 100px;
+        font-size: 12px;
+    }
+    
+}

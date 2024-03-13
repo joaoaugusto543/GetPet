@@ -23,7 +23,7 @@
     border-radius: 30px;
 }
 
-.boxCode p{
+.text{
     color:#99db49 ;
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
@@ -81,4 +81,79 @@
     margin: 0.5em;
     color: red;
     cursor: pointer;
+}
+
+.error{
+    color: red;
+    margin-top: 0.5em;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+@media(max-width:800px){
+    
+    .boxCode{
+        height: 300px;
+        width: 300px;
+    }
+    
+    .text{
+        font-size: 14px;
+    }
+    
+    .boxCode form > label > span{
+        font-size: 14px;
+    }
+    
+    .boxCode form > label > input{
+        font-size: 12px;
+    }
+    
+    .boxCode form > input{
+        height: 23px;
+        width: 80px;
+    }
+    
+    .code svg{
+        font-size: 30px;
+    }
+    
+}
+
+@media(max-width:500px){
+
+    .error{
+        font-size: 11px;
+    }
+    
+    .boxCode{
+        height: 230px;
+        width: 230px;
+    }
+    
+    .text{
+        font-size: 12px;
+    }
+    
+    .boxCode form > label > span{
+        font-size: 11px;
+    }
+    
+    .boxCode form > label > input{
+        font-size: 11px;
+    }
+    
+    .boxCode form > input{
+        width: 60px;
+        font-size: 12px;
+    }
+    
+    .code svg{
+        font-size: 25px;
+    }
+
+    .boxCode{
+        padding: 1em;
+    }
+    
 }

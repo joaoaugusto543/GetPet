@@ -1,0 +1,41 @@
+.empty{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.empty > img{
+    width: 250px;
+    filter: drop-shadow(2px 0px 2px #222);   
+}
+
+.empty > p{
+    font-size: 25px;
+    margin-top: 1em;
+    color:#069e8c ;
+    font-family: 'Roboto', sans-serif;
+}
+
+@media(max-width:700px){
+    
+    .empty > img{
+        width: 200px;
+    }
+    
+    .empty > p{
+        font-size: 20px;
+    }
+}
+
+@media(max-width:400px){
+    
+    .empty > img{
+        width: 150px;
+    }
+    
+    .empty > p{
+        font-size: 18px;
+    }
+}

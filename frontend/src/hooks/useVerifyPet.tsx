@@ -1,7 +1,9 @@
 import { useLayoutEffect } from 'react'
 import useFetchPetsByUser from './useFetchPetsByUser'
 import { useNavigate } from 'react-router-dom'
-import { useAppSelector } from '../store'
+import { useAppDispatch, useAppSelector } from '../store'
+import { resetPet } from '../slices/petsSlices'
+import useFetchPetDashboard from './useFetchPetDashboard'
 
 type Props={
     id:string | undefined
@@ -9,17 +11,22 @@ type Props={
 
 function useVerifyPet({id}:Props) {
 
-  const {pet} = useAppSelector(state => state.pet)
+  const {petDashboard,error} = useAppSelector(state => state.pet)
+
+  useFetchPetDashboard({id})
 
   const {pets} = useFetchPetsByUser()
 
   const navigate = useNavigate()
 
+  const dispatch = useAppDispatch()
+
   function verifyPet(){
 
-    const petExists = pets.find((petItem) => petItem._id === pet?._id)
+    const petExists = pets.find((petItem) => petItem._id === petDashboard?._id)
 
     if(!petExists){
+        dispatch(resetPet())
         navigate('/')
         return
     }
@@ -28,10 +35,19 @@ function useVerifyPet({id}:Props) {
   }
 
   useLayoutEffect(()=>{
-    if(pet && id && pets.length !== 0){
+    if(petDashboard && id && pets.length !== 0){
         verifyPet()
     }
-  },[id,pet])
+
+  },[id,petDashboard,pets])
+
+  useLayoutEffect(()=>{
+
+    if(error && id){
+      verifyPet()
+    }
+
+  },[error,id])
 }
 
 export default useVerifyPet

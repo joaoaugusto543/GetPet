@@ -6,13 +6,16 @@ import useHandleCrop from '../../hooks/useHandleCrop'
 import ImagePet from '../ImagePet/ImagePet'
 import { useAppDispatch, useAppSelector } from '../../store'
 import { useNavigate } from 'react-router-dom'
-import { createPetThunk, resetPet, resetSuccess, updatePetThunk } from '../../slices/petsSlices'
+import { createPetThunk, resetError, resetPet, resetSuccess, updatePetThunk } from '../../slices/petsSlices'
 import useFetchPet from '../../hooks/useFetchPet'
 import ImagesPet from '../../interfaces/imagesPet'
 import { DataPet } from '../../interfaces/DataPet'
 import useVerifyPet from '../../hooks/useVerifyPet'
 import LoaderAddImage from '../Loaders/LoaderAddImage/LoaderAddImage'
 import Doubt from '../Doubt/Doubt'
+import { ErrorsPetInterface } from '../../interfaces/ErrorsPetInterface'
+import useFetchErrorsPet from '../../hooks/useFetchErrorsPet'
+import Error from '../Error/Error'
 
 type Props={
     id:string | undefined,
@@ -25,6 +28,8 @@ function FormPet({id,type}:Props) {
   
   useVerifyPet({id})
 
+  const [errosPetObject,setErrosPetObject] = useState<ErrorsPetInterface>({})
+
   const [name,setName]=useState<string>('')
   const [species,setSpecies]=useState<string>('')
   const [size,setSize]=useState<string>('')
@@ -32,6 +37,8 @@ function FormPet({id,type}:Props) {
   const [image,setImage]=useState<null | File>(null)
   const [images,setImages]=useState<(any)[]>([])
   const [messageSuccessEdit, setMessageSuccessEdit]= useState('')
+
+  const {error,errorDescription,errorName,errorSize,errorSpecies}=useFetchErrorsPet({errosPetObject,setErrosPetObject})
 
   useEffect(()=>{
     if(pet && id){
@@ -61,6 +68,8 @@ function FormPet({id,type}:Props) {
 
   const {loading,success}=useAppSelector(state => state.pet)
   const {token} = useAppSelector(state => state.auth)
+
+  useVerifyPet({id})
 
   const dispatch=useAppDispatch()
 
@@ -102,6 +111,9 @@ function FormPet({id,type}:Props) {
             images
         }
 
+        dispatch(resetError())
+        setErrosPetObject({})
+
         if(type === 'create'){
             dispatch(createPetThunk({token,pet}))
             return
@@ -135,10 +147,12 @@ function FormPet({id,type}:Props) {
             <label>
                 <span>Nome:</span>
                 <input type='text' value={name} max={32} onChange={(e)=>setName(e.target.value)} placeholder='Digite o nome do seu pet' />
+                <Error error={errorName}/>
             </label>
             <label>
                 <span>Espécie:</span>
                 <input type='text' value={species} onChange={(e)=>setSpecies(e.target.value)} placeholder='Digite a espécie do seu pet' />
+                <Error error={errorSpecies}/>
             </label>
             <label>
                 <span>Tamanho:</span>
@@ -148,10 +162,12 @@ function FormPet({id,type}:Props) {
                     <option value='Médio'>Médio</option>
                     <option value='Pequeno'>Pequeno</option>
                 </select>
+                <Error error={errorSize}/>
             </label>
             <label>
                 <span>Descrição:</span>
                 <textarea value={description} onChange={(e)=>setDescription(e.target.value)} placeholder='Digite uma descrição para seu pet'/>
+                <Error error={errorDescription}/>
             </label>
             <label className={styles.files} id={styles.file}>
                 {!loading ? <span><IoMdAddCircle/>Adicionar imagem</span> : <LoaderAddImage/>} 
@@ -162,6 +178,7 @@ function FormPet({id,type}:Props) {
                 <span>{images.length}/10</span>
             </div>
             {type === 'edit' && <Doubt text='Clique em cima dos números para mudar a ordem'/>}
+            <Error error={error}/>
             {!loading ? <input type='submit' onClick={handleSubmit} value={type === 'create' ? 'Criar' : 'Editar'} /> : <input type='submit' disabled value='Aguarde...' />}
         </form>
     </>

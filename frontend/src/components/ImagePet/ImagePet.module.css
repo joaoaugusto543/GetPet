@@ -67,3 +67,24 @@
     align-items: center;
     justify-content: center;
 }
+
+@media(max-width:500px){
+    .divImage{
+        width: 80px;
+        height: 80px;
+    }
+
+    
+    .position{
+        height: 20px;
+        width: 30px;
+        top: 5px;
+    }
+
+    .divPosition{
+        width: 20px;
+        height: 20px;
+    }
+    
+ 
+}

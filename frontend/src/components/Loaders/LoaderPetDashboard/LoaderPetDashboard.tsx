@@ -8,6 +8,7 @@ function LoaderPetDashboard() {
         <div className={styles.buttons}>
             <div></div>
             <div></div>
+            <div></div>
         </div>
     </div>
   )

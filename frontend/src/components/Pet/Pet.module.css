@@ -45,7 +45,6 @@
     color: #99db49;
     padding: 0 1em;
     text-align: justify;
-    height: 100px;
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
@@ -74,4 +73,44 @@
     font-size: 25px;
     margin-top: 4.2em;
     font-weight: bold;
+}
+
+@media(max-width:959px){
+    .pet{
+        margin-right: 0;
+    }
+}
+
+@media(max-width:550px){
+    .petCard{
+        height: 500px;
+        width: 300px;
+        margin-right:0 ;
+    }
+        
+    .petCard img{
+        height: 200px;
+        width: 100%;
+        border-radius: 40px 40px 0px 0px; 
+    }
+    
+    .petCard span{
+        font-size: 25px;
+    }
+    
+    .description{
+        font-size: 18px;
+
+    }
+    
+    .petCard a{
+        padding: 0.3em 1.2em;
+        margin-top:3em;
+        font-size: 16px;
+    }
+    
+    .adopted{
+        font-size: 20px;
+        margin-top: 3.2em;
+    }
 }

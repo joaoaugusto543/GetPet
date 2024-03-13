@@ -5,6 +5,7 @@
     flex-direction: column;
     width: 100%;
     padding: 4em;
+    overflow-x: auto;
 }
 
 .informations{
@@ -24,6 +25,7 @@
     font-family: 'Crimson Text', serif;
     border-bottom: 1px solid rgb(0, 0, 0,0.5);
     padding-bottom: 1em;
+    word-wrap:break-word;
 }
 
 .alert{
@@ -52,20 +54,26 @@
 }
 
 .userInformation{
-    display: grid;
-    grid-template-columns: 200px 200px 200px;
-    grid-template-rows: 30px;
+    display: flex;
     align-items: center;
-    gap: 1em;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
-.userInformation p,.chat{
+.userInformation p,.chat,.localization{
     display: flex;
     align-items: center;
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
-    max-width: 900px;
     text-overflow: ellipsis;
+    margin-right: 5em;
+    margin-bottom: 1em;
+}
+
+.userInformation p,.chat{
+    max-width: 140px;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 
@@ -95,3 +103,139 @@
 .chat svg{
     transition: 0.5s;
 }
+
+.name{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 140px;
+}
+
+.userInformation p > svg{
+    min-width: 10%;
+}
+
+@media(max-width:1027px){
+    .petPage{
+        padding: 2em;
+    }
+
+    .informations{
+        width: 100%;
+    }
+}
+
+@media(max-width:900px){
+    
+    .informations{
+        margin-top: 2em;
+    }
+    
+    .informations h1{
+        font-size: 35px;
+    }
+    
+    .description{
+        font-size: 20px;
+    }
+    
+}
+
+@media(max-width:803px){
+    .chat{
+        margin-left: 0.5em;
+    }
+}
+
+@media(max-width:605px){
+    
+    .alert{
+        font-size: 16px;
+    }
+    
+    .user img{
+        width: 60px;
+        height: 60px;
+    }
+        
+    .userInformation p,.chat,.localization{
+        width: 140px;
+        margin-right: 2em;
+    }
+    
+    
+    .chat{
+        margin-left: 0;
+    }
+    
+    .chat:hover, .chat:hover > svg{
+        color: #8ec44c;
+    }
+    
+    .userInformation svg{
+        font-size: 18px;
+    }
+
+    .informations h1{
+        font-size: 25px;
+    }
+    
+    .description{
+        font-size: 18px;
+    }
+   
+}
+
+@media(max-width:500px){
+    .user{
+        flex-direction: column;
+        height: inherit;
+    }
+
+    .userInformation{
+        justify-content: center;
+    }
+
+    .user img{
+        width: 70px;
+        height: 70px;
+        margin-bottom: 1em;
+    }
+
+    .alert{
+        font-size: 14px;
+    }
+
+    .informations h1{
+        font-size: 20px;
+    }
+    
+    .description{
+        font-size: 16px;
+    }
+
+    .userInformation p,.chat,.localization{
+       font-size: 14px;
+       width: 100%;
+    }
+
+    .name > svg{
+        min-width: 5%;
+    }
+
+    .userInformation svg{
+        font-size: 16px;
+    }
+
+ 
+}
+
+@media(max-width:407px){
+
+    .userInformation{
+        justify-content: flex-start;
+    }
+
+
+}
+

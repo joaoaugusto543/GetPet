@@ -38,7 +38,6 @@
 }
 
 .registerForm > input[type='submit']{
-    background-color: transparent;
     border: none;
     height: 35px;
     width: 150px;
@@ -106,4 +105,97 @@
     color: #fff;
     font-size: 16px;
     font-weight: normal;
+}
+
+.singleError{
+    color: red;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    margin: 0.5em 0;
+}
+
+@media(max-width:900px){
+    
+    .registerForm > label{
+        width: 70%;
+    }
+    
+    .registerForm > label > span{
+        font-size: 18px;
+    }
+    
+    
+    .registerForm > input[type='submit']{
+        border: none;
+        height: 25px;
+        width: 100px;
+        font-size: 13px;
+    }
+    
+    .anonymous{
+        width: 100px;
+        height: 100px;
+    }
+    
+    #file{
+        width: 100px;
+    }
+    
+    #file > span{
+        font-size: 11px;
+
+    }
+    
+    .preview{
+        width: 100px;
+        height: 100px;
+    }
+    
+    #updateFile{
+        width: 130px;
+        height: 25px;
+    }
+    
+    #updateFile > span{
+        font-size: 12px;
+    }
+}
+
+@media(max-width:500px){
+    .registerForm > label{
+        width: 90%;
+    }
+    
+    .registerForm > label > span{
+        font-size: 16px;
+    }
+
+    .registerForm > label > input[type='text'],.registerForm > label > input[type='email'],.registerForm > label > input[type='password'], .registerForm > label > select{
+        font-size: 12px;
+    }
+    
+      
+    .anonymous{
+        width: 90px;
+        height: 90px;
+    }
+    
+    #file{
+        width: 90px;
+    }
+    
+    #file > span{
+        font-size: 10px;
+
+    }
+    
+    .preview{
+        width:90px;
+        height: 90px;
+    }
+    
+    #updateFile{
+        width: 100px;
+    }
+
 }
